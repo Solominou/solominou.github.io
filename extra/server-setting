@@ -5,8 +5,8 @@ After=network.target
 [Service]
 User=solominou
 Group=www-data
-WorkingDirectory=/home/gauravghati/dotworld
-ExecStart=/home/gauravghati/dotworld/env/bin/gunicorn --access-logfile - --workers 3 --bind unix:/home/gauravghati/dotworld/myworld.sock myworld.wsgi:application
+WorkingDirectory=/home/solominou/dotworld
+ExecStart=/home/solominou/dotworld/env/bin/gunicorn --access-logfile - --workers 3 --bind unix:/home/solominou/dotworld/myworld.sock myworld.wsgi:application
 
 [Install]
 WantedBy=multi-user.target
@@ -18,15 +18,15 @@ file name - gunicorn
 
 server {
     listen 80;
-    server_name gauravghati.world;
+    server_name solominou.world;
 
     location = /favicon.ico { access_log off; log_not_found off; }
     location /static/ {
-        root /home/gauravghati/dotworld;
+        root /home/solominou/dotworld;
     }
 
     location / {
         include proxy_params;
-        proxy_pass http://unix:/home/gauravghati/dotworld/myworld.sock;
+        proxy_pass http://unix:/home/solominou/dotworld/myworld.sock;
     }
 }
