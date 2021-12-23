@@ -3,7 +3,7 @@ Description=gunicorn daemon
 After=network.target
 
 [Service]
-User=gauravghati
+User=solominou
 Group=www-data
 WorkingDirectory=/home/gauravghati/dotworld
 ExecStart=/home/gauravghati/dotworld/env/bin/gunicorn --access-logfile - --workers 3 --bind unix:/home/gauravghati/dotworld/myworld.sock myworld.wsgi:application
